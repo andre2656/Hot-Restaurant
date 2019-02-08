@@ -60,7 +60,7 @@
                 <label for="reserve-unique-id">Unique ID</label>
                 <input type="text" class="form-control" id="reserve-unique-id">
               </div>
-              <button type="submit" class="btn btn-primary submit">Submit</button>
+              <button type="submit" class="btn btn-primary submit" id="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -78,8 +78,34 @@
 
   </div>
 
+  <script type="text/javascript">
+
+    $("#submit").on("click", function () {
+      var resName = $("#reserve-name").val().trim();
+      var resPhone = $("#reserve-phone").val().trim();
+      var resEmail = $("#reserve-email").val().trim();
+      var resId = $("#reserve-unique-id").val().trim();
+ 
+
+    var request = {
+      name: resName,
+      phone: resPhone,
+      email: resEmail,
+      id: resId
+    }
+ 
+
+    $.post("/booked", request)
+      .then(function (data) {
+        alert("Adding your reservation to our queue!");
+      });
+
+    });
+
+
+
+
+  </script>
 </body>
 
 </html>
-
-
