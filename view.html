@@ -67,7 +67,19 @@
 
     <script type="text/javascript">
       
-      
+      $.get("/booked", function(data) {
+       console.log(data);
+       for (var i = 0; i < data.length; i++) {
+        var listItem = $("<li>");
+        listItem.text(data[i].name);
+
+          if (i < 5) {
+            $("#tableList").append(listItem);
+          } else {
+            $("#waitList").append(listItem);
+          }
+       }        
+  });
     
     </script>
 </body>
